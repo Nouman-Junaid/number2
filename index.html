@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline JavaScript Buttons</title>
+</head>
+<body>
+
+
+<!-- Button 1: Even or Odd Check -->
+<button onclick="checkEvenOrOdd()">Check Even or Odd</button>
+<div id="displayNumbers"></div>
+
+<p ></p>
+<!-- Button 2: Alert Message -->
+<button onclick="FiniteInfinite()">Finite or Infinite</button>
+
+<script>
+// Function to check if the input number is even or odd
+function checkEvenOrOdd() {
+    const choice = prompt("What do you want to print? Type 'even' or 'odd'.");
+    if (choice !== 'even' && choice !== 'odd') {
+        alert('Invalid input. Please type "even" or "odd".');
+        return; // Stop further execution
+    }
+
+    // Ask how many numbers the user wants to print
+    const count = parseInt(prompt("How many " + choice + " numbers you want to print?"), 10);
+
+    if (isNaN(count) || count <= 0) {
+        alert('Please enter a valid number greater than 0.');
+        return; // Stop further execution
+    }
+    displayNumbers(choice, count);
+}
+
+function displayNumbers(type, count) {
+    let numbers = [];
+    let i = (type === 'even') ? 0 : 1; // Start with 0 for even, 1 for odd
+
+    while (numbers.length < count) {
+        numbers.push(i);
+        i += 2; // Increment by 2 to stay even or odd
+    }
+    // Display the numbers
+    document.getElementById('displayNumber').innerHTML = `<p>The first ${count} ${type} numbers are: ${numbers.join(', ')}</p>`;
+}
+
+
+function FiniteInfinite() {
+    const dividend = prompt("Please Enter First Number.");
+    const divisor = prompt("Please Enter Second Number.");
+    const Quotient =dividend/divisor;
+    if (isFinite(Quotient)) {
+        alert("Result of Finite is=" + Quotient );
+} else {
+   document.write("Division is not possible due to infinite value");
+}
+}
+
+</script>
+
+</body>
+</html>
